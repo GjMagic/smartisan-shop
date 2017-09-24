@@ -7,8 +7,9 @@ let store = new Vuex.Store({
     state: {
         shopData: [],
         smallCartData: [],
-        isEnter: false,
-        timer: null
+        isEnter: false, // 移入移出
+        timer: null,
+        maxLimit: false
     },
     mutations: {
         changeShopData(state, payload) {
@@ -16,6 +17,11 @@ let store = new Vuex.Store({
         },
         addCartData(state, payload) {
             state.smallCartData = payload.car_list
+            if (payload.code === 1) {
+                state.maxLimit = true
+            } else if (payload.code === 0) {
+                state.maxLimit = false
+            }
         },
         getCartData(state, payload) {
             state.smallCartData = payload.car_list
@@ -40,6 +46,9 @@ let store = new Vuex.Store({
                 state.isEnter = false
                 state.timer = null
             }, 3000)
+        },
+        changeMaxLimit(state) {
+            state.maxLimit = false
         }
     },
     actions: {

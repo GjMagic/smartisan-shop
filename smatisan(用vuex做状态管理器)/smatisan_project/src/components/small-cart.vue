@@ -2,16 +2,19 @@
 <div>
     <a href="javascript:;">购物车</a>
     <!--根据class改变颜色-->
-    <span class="cart-empty-num cart-num">
+    <span 
+    class="cart-empty-num"
+    :class="{'cart-num': cartData.length}"
+    >
         <i>{{totalCount}}</i>
     </span>
     <div class="nav-cart-wrapper">
         <div class="nav-cart-list">
-            <div class="empty" v-show="!cartData.length">
+            <div class="empty" v-if="!cartData.length">
                 <h3>购物车为空</h3>
                 <p>您还没有选购任何商品，现在前往商城选购吧!</p>
             </div>
-            <div class="full" v-show="cartData.length">
+            <div class="full" v-else>
                 <div class="nav-cart-items">
                     <ul>
                         <li 
@@ -62,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>            
 </div>
 </template>
 <script>
