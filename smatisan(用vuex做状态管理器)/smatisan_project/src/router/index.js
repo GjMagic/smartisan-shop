@@ -1,13 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HeaderNav from '@/components/header-nav'
 
 Vue.use(Router)
 
+import ShopList from '../views/shop-list'
+import ItemInfo from '@/views/item-info'
+
 export default new Router({
+    mode: 'history',
     routes: [{
         path: '/',
-        name: 'HeaderNav',
-        component: HeaderNav
+        name: 'ShopList',
+        component: ShopList
+    }, {
+        path: '/itemInfo',
+        name: 'ItemInfo',
+        component: ItemInfo
     }]
 })
